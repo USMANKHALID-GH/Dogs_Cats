@@ -8,8 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import org.usman.dogs_cats.dto.BreedDto;
 import org.usman.dogs_cats.dto.DogDto;
 import org.usman.dogs_cats.dto.ResponseDto;
 import org.usman.dogs_cats.mapper.DogMapper;
