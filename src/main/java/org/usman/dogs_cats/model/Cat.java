@@ -38,7 +38,7 @@ public class Cat extends AbstractModel {
     private  boolean availability;
     @NumberFormat
     private Float price;
-    @ManyToOne(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER )
     @JoinColumn(name = "cat_bread",nullable = false)
     private Breed breed;
 }
