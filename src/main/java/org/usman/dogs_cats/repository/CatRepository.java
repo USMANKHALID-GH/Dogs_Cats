@@ -13,7 +13,7 @@ import org.usman.dogs_cats.model.Cat;
 public interface CatRepository  extends JpaRepository<Cat, Long> {
 
     @Query("from Cat  c where  c.breed.breedName=:name")
-    Page<Cat> findCatsByBreedName(Pageable pageable, @Param("name") String name);
+    Page<Cat> findCatsByBreedNameIgnoreCase(Pageable pageable, @Param("name") String name);
 
     @Query(value = """
    select cat_name, description ,image, price from cat_tbl where availability=1
@@ -21,4 +21,9 @@ public interface CatRepository  extends JpaRepository<Cat, Long> {
    select dog_name, description ,image, price from dog_tbl where availability=1;
     """ , nativeQuery = true )
     Page<Object>  findAllCatAndDogByAvailability(Pageable pageable  );
+
+Page<Cat>   findCatByDescriptionContainingIgnoreCase(Pageable pageable, String string);
+
+
+
 }

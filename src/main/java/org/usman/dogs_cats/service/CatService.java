@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 
 import org.springframework.data.repository.query.Param;
 import org.usman.dogs_cats.model.Cat;
+import org.usman.dogs_cats.model.Dog;
 
 import java.util.List;
 
@@ -24,4 +25,8 @@ public interface CatService {
     void deleteCatById(Long id);
 
     Page<Object>  findAllCatAndDogByAvailability(Pageable pageable  );
+
+
+
+    Page<Cat> findCatBysearchingInDescription(Pageable pageable, String string);
 }
