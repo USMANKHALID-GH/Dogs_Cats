@@ -9,10 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.usman.dogs_cats.dto.CatDto;
-import org.usman.dogs_cats.dto.DogDto;
+
 import org.usman.dogs_cats.dto.ResponseDto;
 import org.usman.dogs_cats.mapper.CatMapper;
-import org.usman.dogs_cats.model.Cat;
+
 import org.usman.dogs_cats.service.CatService;
 
 @RestController
@@ -52,7 +52,7 @@ public class CatController {
 
     @GetMapping("/{name}/name")
     @ResponseStatus(value = HttpStatus.ACCEPTED)
-    public  ResponseEntity<Page<CatDto>>  findByDogsByDogName(Pageable pageable,@PathVariable("name") String name){
+    public  ResponseEntity<Page<CatDto>>  findByCatssByDogName(Pageable pageable,@PathVariable("name") String name){
         return  ResponseEntity.ok(new PageImpl<>(mapper.toDto(service.findByCatByBreedName(pageable,name).getContent())));
     }
 
@@ -79,6 +79,10 @@ public class CatController {
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public  ResponseEntity<Page<Object>>  findAllCatsAndDogsByAvailability(Pageable pageable){
         return  ResponseEntity.ok(new PageImpl<>(service.findAllCatAndDogByAvailability(pageable).getContent()));
+    }
+    @GetMapping("/{search}/searchning_in_description")
+    public  ResponseEntity<Page<CatDto>> findBySearchingInDescription(Pageable pageable, @PathVariable("search") String search){
+        return ResponseEntity.ok(new PageImpl<>(mapper.toDto(service.findCatBysearchingInDescription(pageable,search).getContent())));
     }
 
 

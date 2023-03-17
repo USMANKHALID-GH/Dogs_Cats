@@ -27,4 +27,6 @@ public interface DogService {
     void updateAvailability(Long id, Dog dog);
 
     List<Dog> showAllDogNotAvailable(Pageable pageable);
+
+    Page<Dog> findDogBysearchingInDescription(Pageable pageable,String string);
 }

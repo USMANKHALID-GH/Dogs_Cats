@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import org.usman.dogs_cats.dto.DogDto;
 import org.usman.dogs_cats.dto.ResponseDto;
 import org.usman.dogs_cats.mapper.DogMapper;
@@ -95,6 +96,12 @@ public class DogController {
         return  ResponseEntity.ok(ResponseDto.builder().message("Dog is bought Successfully").build());
     }
 
+
+    @GetMapping("/{search}/searchning_in_description")
+    public  ResponseEntity<Page<DogDto>> findBySearchingInDescription(Pageable pageable, @PathVariable("search") String search){
+       log.info("\ndog............."+search);
+        return ResponseEntity.ok(new PageImpl<>(mapper.toDto(service.findDogBysearchingInDescription(pageable,search).getContent())));
+    }
 
 
 }

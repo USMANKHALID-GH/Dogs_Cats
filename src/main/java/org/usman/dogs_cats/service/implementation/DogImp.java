@@ -39,7 +39,7 @@ public class DogImp implements DogService {
 
     @Override
     public Page<Dog> findByDogByBreedName(Pageable pageable, String name) {
-        return dogRepository.findDogsByBreedName(pageable,name);
+        return dogRepository.findDogsByBreedNameIgnoreCase(pageable,name);
 
 }
 
@@ -108,6 +108,11 @@ public class DogImp implements DogService {
     public List<Dog> showAllDogNotAvailable(Pageable pageable) {
         return dogRepository.findAll(pageable).stream().filter(dog -> !dog.isAvailability())
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Page<Dog> findDogBysearchingInDescription(Pageable pageable,String string) {
+        return dogRepository.findDogsByDescriptionContainingIgnoreCase(pageable,string);
     }
 
 

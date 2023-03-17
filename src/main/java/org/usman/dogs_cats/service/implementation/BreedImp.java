@@ -31,7 +31,7 @@ public class BreedImp implements BreedService {
 
     @Override
     public Breed findByBreedName(String name) {
-        return breedRepository.findBreadByBreedName(name).orElseThrow(()->new IdOrNameNotFound("there is  no such %s in our system".formatted(name)));
+        return breedRepository.findBreadByBreedNameIgnoreCase(name).orElseThrow(()->new IdOrNameNotFound("there is  no such %s in our system".formatted(name)));
     }
 
     @Override

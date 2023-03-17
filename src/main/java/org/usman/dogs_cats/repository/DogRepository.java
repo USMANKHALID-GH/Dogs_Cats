@@ -12,6 +12,8 @@ import org.usman.dogs_cats.model.Dog;
 public interface DogRepository extends JpaRepository<Dog,Long> {
 
     @Query("from Dog  d where  d.breed.breedName=:name")
-    Page<Dog>  findDogsByBreedName(Pageable pageable,@Param("name") String name);
+    Page<Dog>  findDogsByBreedNameIgnoreCase(Pageable pageable,@Param("name") String name);
 
+
+    Page<Dog>  findDogsByDescriptionContainingIgnoreCase(Pageable pageable,String string);
 }

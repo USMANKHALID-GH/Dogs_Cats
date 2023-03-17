@@ -1,10 +1,7 @@
 package org.usman.dogs_cats.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.usman.dogs_cats.utilities.ToLower;
@@ -20,6 +17,7 @@ import java.time.LocalDate;
 @DynamicUpdate
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "dog_tbl")
+@Builder
 public class Dog extends  AbstractModel{
     private static final long serialVersionUID=1L;
     @Id

@@ -3,6 +3,7 @@ package org.usman.dogs_cats.service.implementation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.usman.dogs_cats.error.IdOrNameNotFound;
@@ -46,7 +47,7 @@ public class CatImp implements CatService {
     @Override
     public Page<Cat> findByCatByBreedName(Pageable pageable, String name) {
 
-        return  catRepository.findCatsByBreedName(pageable,name);
+        return  catRepository.findCatsByBreedNameIgnoreCase(pageable,name);
     }
 
     @Override
@@ -82,6 +83,14 @@ public class CatImp implements CatService {
     @Override
     public Page<Object> findAllCatAndDogByAvailability(Pageable pageable) {
         return  catRepository.findAllCatAndDogByAvailability(pageable);
+    }
+
+    @Override
+    public Page<Cat> findCatBysearchingInDescription(Pageable pageable, String string) {
+        List<Cat> cats= catRepository.findCatByDescriptionContainingIgnoreCase(pageable,string)
+                .stream()
+                .filter(Cat::isAvailability).collect(Collectors.toList());
+        return new PageImpl<>(cats);
     }
 
 
