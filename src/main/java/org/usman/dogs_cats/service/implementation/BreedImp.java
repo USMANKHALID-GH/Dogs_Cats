@@ -1,11 +1,13 @@
 package org.usman.dogs_cats.service.implementation;
 
+import io.micrometer.observation.ObservationRegistry;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 import org.usman.dogs_cats.error.IdOrNameNotFound;
 import org.usman.dogs_cats.model.Breed;
 import org.usman.dogs_cats.repository.BreedRepository;
@@ -15,8 +17,14 @@ import org.usman.dogs_cats.service.BreedService;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+
+//@HttpExchange
 public class BreedImp implements BreedService {
     private final BreedRepository breedRepository;
+
+
+
+
 
     @Override
     public void createBreed(@Valid Breed breed) {
