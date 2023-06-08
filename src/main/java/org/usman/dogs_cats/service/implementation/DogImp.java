@@ -6,11 +6,14 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.usman.dogs_cats.error.IdOrNameNotFound;
 import org.usman.dogs_cats.model.Dog;
 import org.usman.dogs_cats.repository.DogRepository;
 import org.usman.dogs_cats.service.DogService;
+
 
 import java.util.List;
 
@@ -20,6 +23,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+
 public class DogImp implements DogService {
 
     private final DogRepository dogRepository;
@@ -31,8 +35,10 @@ public class DogImp implements DogService {
         dogRepository.save(dog);
     }
 
+
     @Override
     public List<Dog> showAllBreed(Pageable pageable) {
+        log.info("is working...............\n");
        return dogRepository.findAll(pageable).stream().filter(dog -> dog.isAvailability())
                 .collect(Collectors.toList());
     }

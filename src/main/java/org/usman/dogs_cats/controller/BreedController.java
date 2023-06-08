@@ -26,7 +26,7 @@ public class BreedController {
 
     @PostMapping("/")
     public ResponseEntity<ResponseDto> createBreed(@RequestBody BreedDto breedDto){
-        log.info("\n in the controller...................................."+ breedDto);
+        log.info("\n in the controller...................................."+ breedDto.toString());
            service.createBreed(mapper.toEntity(breedDto));
         return  ResponseEntity.ok(ResponseDto.builder().message("Breed is Created Successfully").build());
 

@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnTransformer;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.usman.dogs_cats.utilities.ToLower;
@@ -17,16 +18,22 @@ import org.usman.dogs_cats.utilities.ToLower;
 @DynamicInsert
 @DynamicUpdate
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "breed_tbl")
+@Table(name = "breed")
 public class Breed extends  AbstractModel{
     private static final long serialVersionUID=1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "breed_id")
     private Long id;
-    @ToLower
-    @Column(unique = true,nullable = false)
-    @NotNull(message = "Breed cant be null")
+
+    @Column(name = "breed_name",unique = true,nullable = false)
+    @ColumnTransformer(read = "LOWER(breed_name)", write = "LOWER(?)")
     private String breedName;
+
+
+//    @Column(name = "breed_name", unique = true, nullable = false)
+//    @ColumnTransformer(read = "LOWER(breed_name)", write = "LOWER(CONCAT(?, '_unique'))")
+//    private String breedName;
 
 }

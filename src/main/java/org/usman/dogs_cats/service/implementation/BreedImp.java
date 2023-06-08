@@ -17,8 +17,6 @@ import org.usman.dogs_cats.service.BreedService;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-
-//@HttpExchange
 public class BreedImp implements BreedService {
     private final BreedRepository breedRepository;
 
@@ -28,7 +26,7 @@ public class BreedImp implements BreedService {
 
     @Override
     public void createBreed(@Valid Breed breed) {
-        log.info("inside service class"+ breed);
+        log.info("inside service class"+ breed.toString());
         breedRepository.save(breed);
     }
 

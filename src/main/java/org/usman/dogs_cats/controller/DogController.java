@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.*;
 
 import org.usman.dogs_cats.dto.DogDto;
@@ -16,6 +17,7 @@ import org.usman.dogs_cats.service.DogService;
 
 @RestController
 @RequiredArgsConstructor
+
 @Slf4j
 @RequestMapping("/api/dog")
 public class DogController {

@@ -4,13 +4,27 @@ spring:
     password: 123456789
     username: root
     url: jdbc:mysql://localhost:3306/cat_dog
+
+
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+
+        naming:
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyUpperCase
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLowerCase
+
+
+
 hibernate:
   dialect=org:
     hibernate:
       dialect:
         MySQL8Dialect: org.hibernate.dialect.MySQL8Dialect
+
 #    mysql database

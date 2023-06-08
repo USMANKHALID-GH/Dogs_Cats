@@ -25,5 +25,5 @@ public interface CatRepository  extends JpaRepository<Cat, Long> {
 Page<Cat>   findCatByDescriptionContainingIgnoreCase(Pageable pageable, String string);
 
 
-
+    Page<Cat>  findByCatNameOrBreedBreedNameOrDescription(String name, String breed, String describ, Pageable pageable);
 }
